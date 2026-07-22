@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syed Fahad Ali | Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Syed Fahad Ali - Full Stack Developer portfolio. React, Next.js, Node.js, Java and database development."
+    />
+
+    <!-- Google Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (code/labels) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+       rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+     />
+
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================== SCROLL PROGRESS BAR ===================== -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header class="navbar" id="navbar">
+      <div class="container navbar__inner">
+        <a href="#hero" class="navbar__logo">
+          <span class="navbar__logo-icon">&lt;/&gt;</span>
+          Fahad<span class="text-gradient">.dev</span>
+        </a>
+
+        <!-- Desktop nav links -->
+        <nav class="navbar__links" id="navLinks">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <!-- Dark / Light theme toggle button -->
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle dark and light theme"
+          >
+            <span id="themeIcon">🌙</span>
+          </button>
+
+          <a href="#contact" class="btn btn--primary btn--small navbar__cta"
+            >Let's Talk</a
+          >
+
+          <!-- Mobile hamburger button -->
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <nav class="mobile-menu" id="mobileMenu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ===================== HERO SECTION ===================== -->
+      <section class="hero" id="hero">
+        <!-- Decorative background grid + glow, purely visual -->
+        <div class="hero__bg-grid" aria-hidden="true"></div>
+        <div class="hero__bg-glow" aria-hidden="true"></div>
+
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <span class="badge">
+              <span class="badge__dot"></span>
+              Available for new opportunities
+            </span>
+
+            <h1 class="hero__title">
+              Hi, I'm <span class="text-gradient">Syed Fahad Ali</span><br />
+              I build for the
+              <span class="typing-text" id="typingText"></span>
+            </h1>
+
+            <p class="hero__subtitle">
+              A Full Stack Developer from India specializing in building modern,
+              scalable, and high-performance web applications — from intuitive
+              interfaces to robust APIs and databases.
+            </p>
+
+            <div class="hero__actions">
+              <a href="image/resume.pdf.png" download class="btn btn--primary">
+                Download Resume
+                <span class="btn__icon">↓</span>
+              </a>
+              <a href="#contact" class="btn btn--outline">
+                Contact Me
+                <span class="btn__icon">→</span>
+              </a>
+            </div>
+
+            <div class="hero__stats">
+              <div class="hero__stat">
+                <p class="hero__stat-label">Full Stack</p>
+                <p class="hero__stat-value">Frontend + Backend</p>
+              </div>
+              <div class="hero__stat">
+                <p class="hero__stat-label">Focus</p>
+                <p class="hero__stat-value">React / Next.js</p>
+              </div>
+              <div class="hero__stat">
+                <p class="hero__stat-label">Based in</p>
+                <p class="hero__stat-value">India</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature element: fake code editor panel -->
+          <div class="hero__panel">
+            <div class="code-panel">
+              <div class="code-panel__header">
+                <span class="code-panel__dot code-panel__dot--red"></span>
+                <span class="code-panel__dot code-panel__dot--yellow"></span>
+                <span class="code-panel__dot code-panel__dot--green"></span>
+                <span class="code-panel__filename">developer.js</span>
+              </div>
+              <pre class="code-panel__body" id="codePanelBody"></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT SECTION ===================== -->
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">About Me</span>
+            <h2 class="section-title">
+              A developer who cares about the whole picture
+            </h2>
+          </div>
+
+          <div class="about__grid">
+            <div class="about__text reveal">
+              <p>
+                I'm Syed Fahad Ali, a Full Stack Developer from India with a
+                passion for building modern, scalable, and high-performance web
+                applications. My work spans the full lifecycle of a product —
+                designing intuitive user interfaces, building reusable frontend
+                components, and engineering the server-side systems and APIs
+                that keep everything running reliably.
+              </p>
+              <p>
+                Currently, I work as a Full Stack Developer on a real-world
+                production project, where I contribute across both frontend and
+                backend: building responsive UIs, developing reusable React and
+                Next.js components, implementing backend features and REST APIs,
+                integrating databases, fixing bugs, testing applications, and
+                collaborating with my team using Git and GitHub.
+              </p>
+              <p>
+                That experience has shaped how I think about software — favoring
+                clean architecture, scalable patterns, and professional
+                workflows over quick fixes. I'm happiest when I'm solving real
+                problems and shipping software that people genuinely enjoy
+                using.
+              </p>
+            </div>
+
+            <div class="about__cards">
+              <div class="glass-card reveal">
+                <div class="glass-card__icon">💻</div>
+                <h3>Full Stack by Craft</h3>
+                <p>
+                  I move fluidly between building intuitive React and Next.js
+                  interfaces and writing the backend logic and APIs that power
+                  them.
+                </p>
+              </div>
+              <div class="glass-card reveal">
+                <div class="glass-card__icon">🧱</div>
+                <h3>Production-Grade Habits</h3>
+                <p>
+                  Working on a live production project has taught me to write
+                  clean, maintainable code and follow real Git workflows.
+                </p>
+              </div>
+              <div class="glass-card reveal">
+                <div class="glass-card__icon">🚀</div>
+                <h3>Driven by Curiosity</h3>
+                <p>
+                  I'm constantly learning new tools and patterns, and I care
+                  about the details that separate a good app from a great one.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SKILLS SECTION ===================== -->
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Skills</span>
+            <h2 class="section-title">Tools I use to bring ideas to life</h2>
+            <p class="section-description">
+              A categorized snapshot of the languages, frameworks, and tools I
+              work with daily across the stack.
+            </p>
+          </div>
+
+          <div class="skills__grid">
+            <!-- Frontend -->
+            <div class="skill-category glass-card reveal">
+              <h3 class="skill-category__title">Frontend</h3>
+
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>HTML5</span><span>95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="95"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>CSS3</span><span>92%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="92"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>JavaScript (ES6+)</span><span>93%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="93"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>TypeScript</span><span>88%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="88"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>React.js</span><span>92%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="92"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Next.js</span><span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Tailwind CSS</span><span>94%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="94"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="skill-category glass-card reveal">
+              <h3 class="skill-category__title">Backend</h3>
+
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Node.js</span><span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Express.js</span><span>84%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="84"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Java</span><span>82%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="82"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Spring Boot</span><span>78%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="78"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Database -->
+            <div class="skill-category glass-card reveal">
+              <h3 class="skill-category__title">Database</h3>
+
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>MySQL</span><span>86%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="86"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>MongoDB</span><span>82%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="82"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="skill-category glass-card reveal">
+              <h3 class="skill-category__title">Tools</h3>
+
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Git &amp; GitHub</span><span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Docker</span><span>70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="70"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Postman</span><span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item__row">
+                  <span>Figma</span><span>75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-bar__fill" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== EXPERIENCE SECTION ===================== -->
+      <section class="section" id="experience">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Experience</span>
+            <h2 class="section-title">Where I've put these skills to work</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline__item reveal">
+              <div class="timeline__dot">💼</div>
+              <div class="timeline__card glass-card">
+                <div class="timeline__card-head">
+                  <h3>Full Stack Developer</h3>
+                  <span class="timeline__period">Current</span>
+                </div>
+                <p class="timeline__org">Production Web Application Team</p>
+                <p class="timeline__summary">
+                  Contributing across the stack on a real-world production
+                  project, from responsive interfaces to backend business logic
+                  and database integration.
+                </p>
+                <ul class="timeline__list">
+                  <li>
+                    Build modern, responsive user interfaces with React and
+                    Next.js
+                  </li>
+                  <li>
+                    Develop reusable, well-tested React and Next.js components
+                  </li>
+                  <li>
+                    Design and implement REST APIs and backend business logic
+                  </li>
+                  <li>Integrate and manage MySQL and MongoDB databases</li>
+                  <li>
+                    Fix bugs, profile performance, and optimize application
+                    speed
+                  </li>
+                  <li>Collaborate with the team using Git and GitHub</li>
+                  <li>Test production-ready applications before release</li>
+                  <li>
+                    Work across the entire feature lifecycle, front to back
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROJECTS SECTION ===================== -->
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Projects</span>
+            <h2 class="section-title">Things I've built end to end</h2>
+            <p class="section-description">
+              A selection of projects spanning enterprise SaaS, secure
+              transactional systems, and everyday practice builds.
+            </p>
+          </div>
+
+          <!-- Project filter buttons -->
+          <div class="project-filters">
+            <button class="filter-btn is-active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="react">
+              React / Next.js
+            </button>
+            <button class="filter-btn" data-filter="java">Java</button>
+            <button class="filter-btn" data-filter="javascript">
+              JavaScript
+            </button>
+          </div>
+
+          <div class="projects__grid" id="projectsGrid">
+            <article
+              class="project-card glass-card project-card--featured"
+              data-category="react"
+            >
+              <div class="project-card__image project-card__image--primary">
+                📁
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tagline"
+                  >Enterprise Project Management Platform</span
+                >
+                <h3>Clariop</h3>
+                <p>
+                  A production-grade SaaS platform for project and team
+                  management. I built responsive marketing and product pages
+                  including the Company Profile, Help Center, and Solution
+                  pages, alongside reusable UI components and backend features.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">React</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">MySQL</span>
+                </div>
+                <div class="project-card__links">
+                  <a href="#" class="project-link">🔗 Code</a>
+                  <a href="#" class="project-link">🌐 Live Demo</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card glass-card" data-category="java">
+              <div class="project-card__image project-card__image--secondary">
+                📁
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tagline"
+                  >Secure Banking &amp; Transactions Platform</span
+                >
+                <h3>Online Banking System</h3>
+                <p>
+                  A full-featured banking application supporting user
+                  authentication, account management, fund transfers, and
+                  transaction history, built on a secure server-side
+                  architecture.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">Java</span>
+                  <span class="tag">JSP</span>
+                  <span class="tag">Servlet</span>
+                  <span class="tag">JDBC</span>
+                  <span class="tag">MySQL</span>
+                </div>
+                <div class="project-card__links">
+                  <a href="#" class="project-link">🔗 Code</a>
+                  <a href="#" class="project-link">🌐 Live Demo</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card glass-card" data-category="java">
+              <div class="project-card__image project-card__image--accent">
+                📁
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tagline"
+                  >Retail &amp; Inventory Management System</span
+                >
+                <h3>Coffee Shop Management System</h3>
+                <p>
+                  A desktop management system for a coffee shop covering product
+                  catalogues, point-of-sale billing, customer orders, and
+                  real-time inventory tracking.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">Java</span>
+                  <span class="tag">MySQL</span>
+                </div>
+                <div class="project-card__links">
+                  <a href="#" class="project-link">🔗 Code</a>
+                  <a href="#" class="project-link">🌐 Live Demo</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card glass-card" data-category="javascript">
+              <div class="project-card__image project-card__image--primary">
+                📁
+              </div>
+              <div class="project-card__body">
+                <span class="project-card__tagline"
+                  >Interactive Browser Game</span
+                >
+                <h3>Tic Tac Toe</h3>
+                <p>
+                  A polished, fully responsive Tic Tac Toe game with smooth
+                  interactions and live score tracking, built as an exercise in
+                  clean vanilla JavaScript state management.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+                <div class="project-card__links">
+                  <a href="#" class="project-link">🔗 Code</a>
+                  <a href="#" class="project-link">🌐 Live Demo</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SERVICES SECTION ===================== -->
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Services</span>
+            <h2 class="section-title">
+              How I can help your product move forward
+            </h2>
+          </div>
+
+          <div class="services__grid">
+            <div class="service-card reveal">
+              <div class="service-card__icon">🧩</div>
+              <h3>Full Stack Development</h3>
+              <p>
+                End-to-end web application development, from database schema to
+                polished, production-ready interfaces.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-card__icon">🖥️</div>
+              <h3>Frontend Development</h3>
+              <p>
+                Fast, accessible, pixel-precise interfaces built with React,
+                Next.js, and Tailwind CSS.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-card__icon">🗄️</div>
+              <h3>Backend Development</h3>
+              <p>
+                Reliable server-side systems and business logic using Node.js,
+                Express, Java, and Spring Boot.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-card__icon">🔌</div>
+              <h3>REST API Development</h3>
+              <p>
+                Well-documented, secure REST APIs designed to scale with clean,
+                versioned architecture.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-card__icon">📱</div>
+              <h3>Responsive Web Design</h3>
+              <p>
+                Mobile-first layouts that adapt cleanly across every device,
+                from phones to ultra-wide displays.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-card__icon">🎨</div>
+              <h3>UI Development</h3>
+              <p>
+                Component-driven interfaces with thoughtful motion, states, and
+                accessibility built in from the start.
+              </p>
+            </div>
+            <div class="service-card reveal">
+              <div class="service-card__icon">⚡</div>
+              <h3>Performance Optimization</h3>
+              <p>
+                Auditing and tuning applications for faster load times, smoother
+                interactions, and better Core Web Vitals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== EDUCATION SECTION ===================== -->
+      <section class="section" id="education">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Education</span>
+            <h2 class="section-title">Academic foundation</h2>
+          </div>
+
+          <div class="education-card glass-card reveal">
+            <div class="education-card__icon">🎓</div>
+            <div class="education-card__body">
+              <div class="education-card__head">
+                <h3>Bachelor of Computer Science</h3>
+                <span class="education-card__period">In Progress</span>
+              </div>
+              <p class="education-card__org">
+                Yogeshwari College Mahavidyalaya
+              </p>
+              <p>
+                Building a strong foundation in data structures, algorithms, and
+                software engineering principles, alongside hands-on frontend and
+                backend development work on real production projects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACT SECTION ===================== -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Contact</span>
+            <h2 class="section-title">Let's build something great together</h2>
+            <p class="section-description">
+              Have a project in mind or an opportunity to discuss? I'd love to
+              hear from you.
+            </p>
+          </div>
+
+          <div class="contact__grid">
+            <div class="contact__info reveal">
+              <a
+                href="mailto:fahadalisayyed3@gmail.com"
+                class="contact__item glass-card"
+              >
+                <span class="contact__icon">✉️</span>
+                <div>
+                  <p class="contact__label">Email</p>
+                  <p class="contact__value">fahadalisayyed3@gmail.com</p>
+                </div>
+              </a>
+              <div class="contact__item glass-card">
+                <span class="contact__icon">📞</span>
+                <div>
+                  <p class="contact__label">Phone</p>
+                  <p class="contact__value">+91 8080967176</p>
+                </div>
+              </div>
+              <div class="contact__item glass-card">
+                <span class="contact__icon">📍</span>
+                <div>
+                  <p class="contact__label">Location</p>
+                  <p class="contact__value">India</p>
+                </div>
+              </div>
+
+              <div class="contact__socials">
+                <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">💼</a>
+                <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+              </div>
+            </div>
+
+            <!-- Contact form: validated with JavaScript (script.js), no backend submission -->
+            <form
+              class="contact-form glass-card reveal"
+              id="contactForm"
+              novalidate
+            >
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your full name"
+                />
+                <span class="form-error" id="nameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                />
+                <span class="form-error" id="emailError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your project or opportunity"
+                ></textarea>
+                <span class="form-error" id="messageError"></span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full">
+                Send Message
+                <span class="btn__icon">→</span>
+              </button>
+
+              <p class="form-success" id="formSuccess">
+                Thanks for reaching out — I'll get back to you soon.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="navbar__logo">
+            <span class="navbar__logo-icon">&lt;/&gt;</span>
+            Fahad<span class="text-gradient">.dev</span>
+          </a>
+          <p>
+            Full Stack Developer crafting fast, scalable, and thoughtfully
+            designed web applications.
+          </p>
+        </div>
+
+        <div class="footer__nav">
+          <p class="footer__heading">Quick Navigation</p>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+ <div class="footer__social">
+  <p class="footer__heading">CONNECT</p>
+  <div class="footer__social-icons">
+    <a href="https://github.com/Syedfahad8080" target="_blank" class="social-icon">
+      <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/syedfahadali02/" target="_blank" class="social-icon">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <a href="mailto:fahadalisayyed3@gmail.com" class="social-icon">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</div>
+      <div class="footer__bottom container">
+        <p>
+          &copy; <span id="year"></span> Syed Fahad Ali. All rights reserved.
+        </p>
+        <p>Designed &amp; Developed by Syed Fahad Ali</p>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      ↑
+    </button>
+
+    <!-- Our JavaScript file -->
+     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
