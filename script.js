@@ -439,3 +439,26 @@ function initFooterYear() {
 }
 
 emailjs.init("xJmeDiHtghM2YBQ5t");
+
+const liveDemoBtn = document.getElementById("liveDemoBtn");
+const videoPanel = document.getElementById("videoPanel");
+const closeVideo = document.getElementById("closeVideo");
+const clariopVideo = document.getElementById("clariopVideo");
+
+if (liveDemoBtn) {
+  liveDemoBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    videoPanel.classList.add("active");
+
+    clariopVideo.play();
+  });
+}
+
+closeVideo.addEventListener("click", function () {
+  videoPanel.classList.remove("active");
+
+  clariopVideo.pause();
+
+  clariopVideo.currentTime = 0;
+});
