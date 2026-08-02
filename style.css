@@ -359,7 +359,9 @@ textarea:focus-visible {
 }
 
 .navbar__cta {
-  display: none;
+    min-width: 145px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .theme-toggle {
@@ -433,6 +435,16 @@ textarea:focus-visible {
 
 .mobile-menu .nav-link {
   padding: 12px 16px;
+}
+
+/* On narrow phones there isn't room for logo + theme toggle + the
+   "Let's Talk" button + hamburger all in one row, which pushed the
+   CTA off-screen. Hide the CTA there; Contact is still one tap away
+   via the hamburger menu. */
+@media (max-width: 480px) {
+  .navbar__cta {
+    display: none;
+  }
 }
 
 /* =====================================================
@@ -677,6 +689,26 @@ textarea:focus-visible {
 .about__cards p {
   color: var(--color-muted);
   font-size: 0.9rem;
+}
+
+/* About page subsections (Technical Skills, Experience, Education,
+   Languages, Certifications) all live inside #about now. Reuses the
+   existing eyebrow / section-title type scale, just at a slightly
+   smaller heading size and with top spacing to separate blocks. */
+.about__subsection {
+  margin-top: 88px;
+}
+
+.about__subsection-heading {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.about__subsection-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* =====================================================
@@ -1059,6 +1091,80 @@ textarea:focus-visible {
 }
 
 /* =====================================================
+   13a. LANGUAGES (About subsection)
+   ===================================================== */
+.languages__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.language-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.language-chip:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* =====================================================
+   13b. CERTIFICATIONS (About subsection)
+   ===================================================== */
+.certifications__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.certification-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.certification-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gradient-primary);
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.certification-card__name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.certification-card__org {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.certification-card__btn {
+  margin-top: auto;
+}
+
+/* =====================================================
    14. CONTACT SECTION
    ===================================================== */
 .contact__grid {
@@ -1321,6 +1427,10 @@ textarea:focus-visible {
   .timeline__list {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .certifications__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Small laptops and up (≥ 900px): show desktop nav, hide hamburger */
@@ -1349,6 +1459,10 @@ textarea:focus-visible {
 /* Desktops and up (≥ 1024px) */
 @media (min-width: 1024px) {
   .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .certifications__grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
