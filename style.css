@@ -1445,3 +1445,18 @@ textarea:focus-visible {
     border-radius:15px;
 
 }
+
+/* =====================================================
+   18. SPA-STYLE SECTION NAVIGATION
+   Only one <main> section is visible at a time. JS toggles
+   inline display/opacity on click for a smooth, page-like
+   transition without a full reload. Home (#hero) is the
+   default section shown on first load.
+   ===================================================== */
+main > section {
+  transition: opacity 0.35s ease;
+}
+
+main > section:not(#hero) {
+  display: none;
+}

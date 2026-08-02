@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initBackToTop();
   initFooterYear();
+  initSectionNav();
 });
 
 /* -----------------------------------------------------
@@ -436,6 +437,114 @@ function initFooterYear() {
   const yearEl = document.getElementById("year");
   if (!yearEl) return;
   yearEl.textContent = new Date().getFullYear();
+}
+
+/* -----------------------------------------------------
+   14. SPA-STYLE SECTION NAVIGATION
+   Clicking a nav link (desktop nav, mobile nav, footer nav,
+   logo, or the "Let's Talk" button) shows only that section
+   — like a separate "page" — while hiding all others, with
+   a smooth fade transition and no full page reload.
+   Home (#hero) is shown by default when the site loads.
+----------------------------------------------------- */
+function initSectionNav() {
+  const main = document.querySelector("main");
+  if (!main) return;
+
+  const sections = Array.from(main.querySelectorAll(":scope > section[id]"));
+  if (!sections.length) return;
+
+  const TRANSITION_MS = 350;
+  let activeId = "hero";
+  let isAnimating = false;
+
+  function applyActiveState(id) {
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      const href = link.getAttribute("href");
+      link.classList.toggle("is-active", href === `#${id}`);
+    });
+  }
+
+  // Immediately re-run the existing reveal / skill-bar animations
+  // for whatever section just became visible, so users don't have
+  // to scroll for content to appear.
+  function revealSectionContent(section) {
+    section.querySelectorAll(".reveal").forEach((el) => {
+      el.classList.add("is-visible");
+    });
+    section.querySelectorAll(".skill-bar__fill").forEach((bar) => {
+      const width = bar.getAttribute("data-width") || "0";
+      bar.style.width = width + "%";
+    });
+  }
+
+  function showSection(id) {
+    if (isAnimating || id === activeId) return;
+
+    const target = sections.find((sec) => sec.id === id);
+    const current = sections.find((sec) => sec.id === activeId);
+    if (!target) return;
+
+    isAnimating = true;
+
+    function activateTarget() {
+      sections.forEach((sec) => {
+        if (sec === target) return;
+        sec.style.display = "none";
+        sec.style.opacity = "";
+      });
+
+      // Hero relies on its own CSS (display: flex); every other
+      // section is a plain block-level <section>.
+      target.style.display = target.id === "hero" ? "" : "block";
+      target.style.opacity = "0";
+      // Force a reflow so the browser registers the starting
+      // opacity before we transition it, giving a real fade-in.
+      void target.offsetWidth;
+      target.style.opacity = "1";
+
+      activeId = id;
+      applyActiveState(id);
+      window.scrollTo({ top: 0, behavior: "auto" });
+      revealSectionContent(target);
+      history.replaceState(null, "", `#${id}`);
+
+      setTimeout(() => {
+        isAnimating = false;
+      }, TRANSITION_MS);
+    }
+
+    if (current) {
+      current.style.opacity = "0";
+      setTimeout(activateTarget, TRANSITION_MS);
+    } else {
+      activateTarget();
+    }
+  }
+
+  // Hook into every in-page anchor link that points at a real
+  // section id (nav, mobile nav, footer, logo, CTA buttons).
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.length < 2) return;
+    const id = href.slice(1);
+    if (!sections.some((sec) => sec.id === id)) return;
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showSection(id);
+
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (hamburger && mobileMenu) {
+        hamburger.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+      }
+    });
+  });
+
+  // Home (#hero) is always the default page shown on first load.
+  applyActiveState("hero");
 }
 
 emailjs.init("xJmeDiHtghM2YBQ5t");
